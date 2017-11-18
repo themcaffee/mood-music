@@ -8,10 +8,10 @@ Using a Muse EEG headband we are able to scan a current level of mellowness from
 
 ### Prerequisites
 You will need:
-    * Muse EEG-reading headband
-    * Device with python3 to process the headband data and interface with Spotify.
-    * Spotify account with premium subscription
-    * Spotify developer account (free - https://developer.spotify.com)
+* Muse EEG-reading headband
+* Device with python3 to process the headband data and interface with Spotify
+* Spotify account with premium subscription
+* Spotify developer account (free - https://developer.spotify.com)
 
 
 ### Usage
@@ -35,9 +35,9 @@ python demo.py
 ```
 
 ## Built With
-    * [Muse](http://www.choosemuse.com/) - EEG Headband
-    * [Spotipy](https://github.com/plamere/spotipy/) - Used for Spotify API Authentication
-    * [Spotify Web API](https://developer.spotify.com/web-api/) - Spotify API
+* [Muse](http://www.choosemuse.com/) - EEG Headband
+* [Spotipy](https://github.com/plamere/spotipy/) - Used for Spotify API Authentication
+* [Spotify Web API](https://developer.spotify.com/web-api/) - Spotify API
 
 ## Authors
-This project was created by Mitch McAffee and Rahul Ramkumar for hackusu 2017.
+This project was created by Mitch McAffee and Rahul Ramkumar for hackusu 2017
