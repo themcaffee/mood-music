@@ -1,4 +1,6 @@
 import math
+from pprint import pprint
+
 from flask import Flask, request, jsonify
 
 # Config
@@ -13,7 +15,7 @@ def predict():
     Expected json [{"danceability": 0.0, "energy": 0.0, "id": "songid"}]
     :return: The best song based on the current mood
     """
-    json = request.get_json()
+    json = request.get_json()['audio_features']
 
     # Read the current average
     with open(AVERAGE_FILE, 'r') as f:
