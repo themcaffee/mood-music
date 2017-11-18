@@ -30,6 +30,13 @@ export FLASK_RUN=predict_api.py
 flask run --port 8000
 ```
 
+Set some environment variables:
+```
+export SPOTIPY_CLIENT_ID={your spotify developer account client id}
+export SPOTIPY_CLIENT_SECRET={your spotify dev account client secret}
+export SPOTIPY_REDIRECT_URI={any redirect URI will do}
+export SPOTIFY_USERNAME={your spotify username}
+```
 To run the demo application also run this:
 ```
 python demo.py
