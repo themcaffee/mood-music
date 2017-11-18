@@ -3,7 +3,7 @@
 Play music based on your current mood.
 Using a Muse EEG headband we are able to scan a current level of mellowness from the wearer and use that to queue up songs on Spotify that keep up with the mood of the wearer in realtime.
 
-![Muse Music in Action.gif](https://github.com/themcaffee/muse-music/blob/master/)
+![Muse Music in Action.gif](https://github.com/themcaffee/muse-music/blob/master/output.gif)
 ## Getting Started
 
 
