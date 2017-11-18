@@ -48,9 +48,9 @@ def get_mitches_mellow():
     return float(mello.text)
 
 def generate_recommendation():
-    mitches_mellow = get_mitches_mellow()
-    max_energy = (mitches_mellow+MAX_MELLOW_DIFFERENCE > 1.0) ? 1.0 : mitches_mellow+MAX_MELLOW_DIFFERENCE
-    min_energy = (mitches_mellow-MAX_MELLOW_DIFFERENCE < 0.0) ? 0.0 : mitches_mellow-MAX_MELLOW_DIFFERENCE
+    mitches_mellow = 0.5#get_mitches_mellow()
+    max_energy = 1.0 if (mitches_mellow+MAX_MELLOW_DIFFERENCE > 1.0) else mitches_mellow+MAX_MELLOW_DIFFERENCE
+    min_energy = 0.0 if (mitches_mellow-MAX_MELLOW_DIFFERENCE < 0.0) else mitches_mellow-MAX_MELLOW_DIFFERENCE
     payload = {'seed_tracks': get_current_song_uri(), 
     'limit': NUMBER_OF_RECOMMENDATIONS, 'max_energy': max_energy, 
     'min_energy': min_energy}
