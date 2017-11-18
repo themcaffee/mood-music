@@ -1,5 +1,7 @@
 # Muse Music
 
+Play music based on your current mood.
+
 
 ### Usage
 

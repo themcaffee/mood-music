@@ -15,10 +15,9 @@ def predict():
     """
     json = request.get_json()
 
+    # Read the current average
     with open(AVERAGE_FILE, 'r') as f:
         read_avg_float = float(f.read())
-
-    # Find the song with the closest energy to the current
 
     # Calculate the difference between the inverse mellow_avg and the energy
     best_song_id = ""

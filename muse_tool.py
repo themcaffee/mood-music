@@ -1,7 +1,4 @@
 import argparse
-import json
-import math
-from pprint import pprint
 
 from pythonosc import dispatcher
 from pythonosc import osc_server
@@ -27,6 +24,13 @@ class MuseServer():
             (args.ip, args.port), self.dispatcher)
 
     def mellow_handler(self, unused_addr, args, score):
+        """
+        Handles a new mellow value by averaging it and writing to a file
+        :param unused_addr:
+        :param args:
+        :param score:
+        :return:
+        """
         self.running_total += score
         if self.tick == TICK_AVG:
             # Calculate and print the average
@@ -40,19 +44,10 @@ class MuseServer():
             self.tick = 0
         else:
             self.tick += 1
-            # print("Tick: {}".format(str(self.tick)))
 
     def run_server(self):
         print("Serving on {}:{}".format(self.ip, self.port))
         self.server.serve_forever()
-
-    def predict_best_song(self, song_list):
-        """
-        Expects song_list: {"songid": {"danceability": 0.0, "energy": 0.0}}
-        :param song_list:
-        :return:
-        """
-        pass
 
 
 if __name__ == "__main__":
