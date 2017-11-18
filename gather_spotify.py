@@ -96,7 +96,7 @@ if __name__ == '__main__':
     track_list = get_recommendations_list(header, "0bRJboc2VNrbM5XAolC5gD")
     audio_features = {}
 
-    for i in range(1):
+    for i in range(2):
         new_audio_features, track_list = get_next(header, track_list)
         pprint(track_list)
         audio_features = merge_two_dicts(audio_features, new_audio_features)
