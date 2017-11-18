@@ -2,15 +2,15 @@ import spotipy, json, time, sys, requests, os, re, requests, math, logging
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy.util as util
 
-MAX_MELLOW_DIFFERENCE = 0.2
-NUMBER_OF_RECOMMENDATIONS = 30
+MAX_MELLOW_DIFFERENCE = 0.15
+NUMBER_OF_RECOMMENDATIONS = 10
 SPOTIFY_PLAYLIST_ID="5Fbeyv4EISgBQF5P1ol9Tt"
 logger = logging.getLogger()
 handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s %(name)-16s %(levelname)-8s %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 def get_spotify_token():
     client_credentials_manager = SpotifyClientCredentials()
@@ -49,11 +49,14 @@ def get_mitches_mellow():
 
 def generate_recommendation():
     mitches_mellow = get_mitches_mellow()
+    max_energy = (mitches_mellow+MAX_MELLOW_DIFFERENCE > 1.0) ? 1.0 : mitches_mellow+MAX_MELLOW_DIFFERENCE
+    min_energy = (mitches_mellow-MAX_MELLOW_DIFFERENCE < 0.0) ? 0.0 : mitches_mellow-MAX_MELLOW_DIFFERENCE
     payload = {'seed_tracks': get_current_song_uri(), 
-    'limit': NUMBER_OF_RECOMMENDATIONS, 'max_energy': mitches_mellow+MAX_MELLOW_DIFFERENCE, 
-    'min_energy': mitches_mellow-MAX_MELLOW_DIFFERENCE}
+    'limit': NUMBER_OF_RECOMMENDATIONS, 'max_energy': max_energy, 
+    'min_energy': min_energy}
     recommendations = requests.get("https://api.spotify.com/v1/recommendations", headers = get_request_headers(), params = payload)
     recommendations_uri_list = recommendation_attributes(recommendations.text)
+    logger.debug(recommendations_uri_list)
     payload = {'ids': ",".join(recommendations_uri_list)}
     r = requests.get("https://api.spotify.com/v1/audio-features", 
         headers = get_request_headers(), params = payload)
