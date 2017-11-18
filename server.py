@@ -2,8 +2,8 @@ import spotipy, json, time, sys, requests, os, re, requests, math, logging
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy.util as util
 
-MAX_MELLOW_DIFFERENCE = 0.15
-NUMBER_OF_RECOMMENDATIONS = 10
+MAX_MELLOW_DIFFERENCE = 0.2
+NUMBER_OF_RECOMMENDATIONS = 30
 SPOTIFY_PLAYLIST_ID="5Fbeyv4EISgBQF5P1ol9Tt"
 logger = logging.getLogger()
 handler = logging.StreamHandler()
