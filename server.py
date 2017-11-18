@@ -33,7 +33,6 @@ def get_request_headers():
 
 def recommendation_attributes(recommendations_text):
     uris = re.findall(r'\"(?:spotify:track:)([\S]*)\"', recommendations_text)
-    print(uris)
     return uris
 
 def get_current_song_uri():
@@ -53,6 +52,9 @@ def generate_recommendation():
     payload = {'seed_tracks': get_current_song_uri(), 
     'limit': NUMBER_OF_RECOMMENDATIONS, 'max_energy': mitches_mellow+MAX_MELLOW_DIFFERENCE, 
     'min_energy': mitches_mellow-MAX_MELLOW_DIFFERENCE}
+    recommendations = requests.get("https://api.spotify.com/v1/recommendations", headers = get_request_headers(), params = payload)
+    recommendations_uri_list = recommendation_attributes(recommendations.text)
+    payload = {'ids': ",".join(recommendations_uri_list)}
     r = requests.get("https://api.spotify.com/v1/audio-features", 
         headers = get_request_headers(), params = payload)
     json_data = r.json()['audio_features']
