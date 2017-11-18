@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # Muse Music
-
 
 
 ### Usage
@@ -17,6 +15,3 @@ python muse_tool.py
 export FLASK_RUN=predict_api.py
 flask run --port 8000
 ```
-=======
-# muse-music
->>>>>>> 18faf90208ad83f4cbc13766d8b489b0512909d4
