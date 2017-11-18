@@ -5,6 +5,8 @@ Play music based on your current mood.
 
 ### Usage
 
+Connect Muse via bluetooth.
+
 ```
 ./muse-io --device 00:06:66:65:92:94 --osc osc.udp://127.0.0.1:5000
 ```

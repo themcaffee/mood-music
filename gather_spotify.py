@@ -85,15 +85,22 @@ def create_tables(engine_db):
     Base.metadata.create_all(engine_db)
 
 
-if __name__ == '__main__':
+def print_database(session):
+    result = session.query(Song).all()
+    for i in result:
+        print(str(i.energy) + " - " + str(i.song_id))
+
+
+def main():
     engine = create_engine('sqlite:///songs.db')
     create_tables(engine)
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
 
+    """
     print("Starting to get data from spotify")
     header = get_request_headers()
-    track_list = get_recommendations_list(header, "0bRJboc2VNrbM5XAolC5gD")
+    track_list = get_recommendations_list(header, "0wVPyqumJ4hMOb0Tjg7Qdb")
     audio_features = {}
 
     for i in range(2):
@@ -121,3 +128,9 @@ if __name__ == '__main__':
     # Read records from database
     result = session.query(Song).count()
     print("{} records in database".format(str(result)))
+    """
+    print_database(session)
+
+
+if __name__ == '__main__':
+    main()
