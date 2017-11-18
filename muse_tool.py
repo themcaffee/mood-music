@@ -4,7 +4,7 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 
 
-TICK_AVG = 10
+TICK_AVG = 50
 AVERAGE_FILE = "mellow_avg"
 
 

@@ -32,3 +32,15 @@ def predict():
             smallest_difference = diff
 
     return jsonify(best_song_id), 200
+
+
+@app.route("/mellow", methods=["GET"])
+def get_mellow():
+    """
+    Get the mellow level
+    :return:
+    """
+    # Read the current average
+    with open(AVERAGE_FILE, 'r') as f:
+        read_avg_float = float(f.read())
+    return jsonify(read_avg_float), 200
